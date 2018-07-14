@@ -4,12 +4,6 @@ import Book from './Book';
 import SearchField from './SearchField';
 
 class SearchPage extends React.Component {
-  static PropTypes = {
-    onSearchBooks: PropTypes.func.isRequired,
-    bookCollection: PropTypes.array.isRequired,
-    onUpdateBook: PropTypes.func.isRequired
-  }
-
   render() {
     const {onSearchBooks, bookCollection, onUpdateBook} = this.props;
     return (
@@ -37,6 +31,12 @@ class SearchPage extends React.Component {
       </div>
     )
   }
-}
+};
+
+SearchPage.propTypes = {
+  onSearchBooks: PropTypes.func.isRequired,
+  bookCollection: PropTypes.array,
+  onUpdateBook: PropTypes.func.isRequired
+};
 
 export default SearchPage
