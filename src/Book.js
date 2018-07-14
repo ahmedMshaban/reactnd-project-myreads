@@ -1,6 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Book extends React.Component {
+  static PropTypes = {
+    onUpdateBook: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired
+  }
+
   updateShelf = (e) => {
     e.preventDefault();
     this.props.onUpdateBook(this.props.data, e.target.value);

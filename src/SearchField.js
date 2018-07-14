@@ -1,37 +1,29 @@
 import React from 'react';
-import Book from './Book';
-import SearchField from './SearchField';
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
-class SearchPage extends React.Component {
+class SearchField extends React.Component {
+  static PropTypes = {
+    onSearchBooks: PropTypes.func.isRequired
+  }
+
+  searchBooks = (e) => {
+		e.preventDefault();
+    this.props.onSearchBooks(e.target.value);
+  }
+
   render() {
     return (
-      <div>
-        <SearchField
-          oncloseSearch = {() => {
-            this.props.oncloseSearch();
-          }}
-          onSearchBooks = {(query) => {
-            this.props.onSearchBooks(query);
-          }}
-        />
-        <div className="search-books-results">
-          <ol className="books-grid">
-            {this.props.bookCollection.map(book => {
-              let {id, imageLinks, title, authors, shelf} = book;
-              return <Book
-                        onUpdateBook = {(book, shelf) => {
-                          this.props.onUpdateBook(book, shelf);
-                        }}
-                        key = {book.id}
-                        data = {{id, imageLinks, title, authors, shelf}}
-                      />
-            }
-          )}
-          </ol>
+        <div className="search-books">
+            <div className="search-books-bar">
+              <Link className="close-search" to="/">Close</Link>
+              <div className="search-books-input-wrapper">
+                <input onChange={this.searchBooks} type="text" placeholder="Search by title or author"/>
+              </div>
+          </div>
         </div>
-      </div>
     )
   }
 }
 
-export default SearchPage
+export default SearchField
