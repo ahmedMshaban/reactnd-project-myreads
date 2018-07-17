@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 class SearchField extends React.Component {
-
   searchBooks = (e) => {
 		e.preventDefault();
-    this.props.onSearchBooks(e.target.value)
+    this.props.onSearchBooks(e.target.value);
   }
 
   render() {
@@ -20,6 +20,10 @@ class SearchField extends React.Component {
         </div>
     )
   }
-}
+};
+
+SearchField.propTypes = {
+  onSearchBooks: PropTypes.func.isRequired
+};
 
 export default SearchField

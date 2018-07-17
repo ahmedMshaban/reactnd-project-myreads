@@ -16,7 +16,7 @@ const Shelf = ({shelfName, bookCollection, onUpdateBook}) => {
                             key={book.id}
                             data={{id, imageLinks, title, authors, shelf}}
                           />
-
+                
                 }
             )}
             </ol>
